@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4213281E-2F17-4A3F-8B64-DBA4D980ABC4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WindowsFormsApp1</RootNamespace>
+    <AssemblyName>WindowsFormApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>StacomRBG-removebg-preview-removebg-preview.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddAgenti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAgenti.Designer.cs">
+      <DependentUpon>AddAgenti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddClienti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddClienti.Designer.cs">
+      <DependentUpon>AddClienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddProduse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddProduse.Designer.cs">
+      <DependentUpon>AddProduse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddServicii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddServicii.Designer.cs">
+      <DependentUpon>AddServicii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddSofer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSofer.Designer.cs">
+      <DependentUpon>AddSofer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddVehicule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddVehicule.Designer.cs">
+      <DependentUpon>AddVehicule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="avizmarfa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="avizmarfa.Designer.cs">
+      <DependentUpon>avizmarfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CertificatGarantie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CertificatGarantie.Designer.cs">
+      <DependentUpon>CertificatGarantie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClassAgenti.cs" />
+    <Compile Include="ClassClienti.cs" />
+    <Compile Include="ClassProduse.cs" />
+    <Compile Include="ClassServicii.cs" />
+    <Compile Include="ClassSoferi.cs" />
+    <Compile Include="ClassTehnicieni.cs" />
+    <Compile Include="ClassVehicule.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet4-Factura.cs">
+      <DependentUpon>DataSet4-Factura.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet4-Factura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet4-Factura.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet4-SelectTehnician.cs">
+      <DependentUpon>DataSet4-SelectTehnician.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet4-SelectTehnician.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet4-SelectTehnician.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet5.cs">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetLoguri.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetLoguri.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="devizestimativ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="devizestimativ.Designer.cs">
+      <DependentUpon>devizestimativ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturi.Designer.cs">
+      <DependentUpon>Facturi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="getusername.cs" />
+    <Compile Include="lista.cs" />
+    <Compile Include="listaagenti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="listaagenti.Designer.cs">
+      <DependentUpon>listaagenti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="loguri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loguri.Designer.cs">
+      <DependentUpon>loguri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProceseVerbale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProceseVerbale.Designer.cs">
+      <DependentUpon>ProceseVerbale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RaportFProduse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaportFProduse.Designer.cs">
+      <DependentUpon>RaportFProduse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaportFServicii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaportFServicii.Designer.cs">
+      <DependentUpon>RaportFServicii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaportSelectSofer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaportSelectSofer.Designer.cs">
+      <DependentUpon>RaportSelectSofer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaportSTehnician.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaportSTehnician.Designer.cs">
+      <DependentUpon>RaportSTehnician.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RaportRServicii.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaportRServicii.Designer.cs">
+      <DependentUpon>RaportRServicii.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectClienti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectClienti.Designer.cs">
+      <DependentUpon>SelectClienti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectProduseValabile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectProduseValabile.Designer.cs">
+      <DependentUpon>SelectProduseValabile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StacomDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StacomDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="stringconnection.cs" />
+    <Compile Include="AddTehnicieni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTehnicieni.Designer.cs">
+      <DependentUpon>AddTehnicieni.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddAgenti.resx">
+      <DependentUpon>AddAgenti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddClienti.resx">
+      <DependentUpon>AddClienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProduse.resx">
+      <DependentUpon>AddProduse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddServicii.resx">
+      <DependentUpon>AddServicii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSofer.resx">
+      <DependentUpon>AddSofer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddVehicule.resx">
+      <DependentUpon>AddVehicule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvizInsotireMarfa.rdlc" />
+    <EmbeddedResource Include="avizmarfa.resx">
+      <DependentUpon>avizmarfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CertificatGarantie.resx">
+      <DependentUpon>CertificatGarantie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="devizestimativ.resx">
+      <DependentUpon>devizestimativ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturi.resx">
+      <DependentUpon>Facturi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="listaagenti.rdlc" />
+    <EmbeddedResource Include="listaagenti.resx">
+      <DependentUpon>listaagenti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loguri.rdlc" />
+    <EmbeddedResource Include="loguri.resx">
+      <DependentUpon>loguri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProceseVerbale.resx">
+      <DependentUpon>ProceseVerbale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="AddTehnicieni.resx">
+      <DependentUpon>AddTehnicieni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaportFProduse.rdlc" />
+    <EmbeddedResource Include="RaportFProduse.resx">
+      <DependentUpon>RaportFProduse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaportFServicii.resx">
+      <DependentUpon>RaportFServicii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaportSelectSofer.resx">
+      <DependentUpon>RaportSelectSofer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaportSTehnician.resx">
+      <DependentUpon>RaportSTehnician.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RaportRServicii.resx">
+      <DependentUpon>RaportRServicii.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="RaportTServicii.rdlc" />
+    <EmbeddedResource Include="CertificatGarantie.rdlc" />
+    <EmbeddedResource Include="ProceseVerbale.rdlc" />
+    <EmbeddedResource Include="devizestimativ.rdlc" />
+    <EmbeddedResource Include="ReportFServicii.rdlc" />
+    <EmbeddedResource Include="ReportFactura.rdlc" />
+    <EmbeddedResource Include="SelectClienti.resx">
+      <DependentUpon>SelectClienti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectProduseValabile.resx">
+      <DependentUpon>SelectProduseValabile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectRTehnicianService.rdlc" />
+    <EmbeddedResource Include="SelectSofer.rdlc" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet3.xsc">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet3.xss">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet4-Factura.xsc">
+      <DependentUpon>DataSet4-Factura.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet4-Factura.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet4-Factura.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet4-Factura.xss">
+      <DependentUpon>DataSet4-Factura.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet4-SelectTehnician.xsc">
+      <DependentUpon>DataSet4-SelectTehnician.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet4-SelectTehnician.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet4-SelectTehnician.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet4-SelectTehnician.xss">
+      <DependentUpon>DataSet4-SelectTehnician.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsc">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet5.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet5.xss">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetLoguri.xsc">
+      <DependentUpon>DataSetLoguri.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetLoguri.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetLoguri.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetLoguri.xss">
+      <DependentUpon>DataSetLoguri.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="StacomDataSet.xsc">
+      <DependentUpon>StacomDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="StacomDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StacomDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="StacomDataSet.xss">
+      <DependentUpon>StacomDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\client.png" />
+    <None Include="Resources\StacomRBG.png" />
+    <None Include="Resources\vehicle.png" />
+    <None Include="Resources\chauffeur-icon-1.png" />
+    <None Include="Resources\service.png" />
+    <None Include="Resources\tehnicieni.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer-service.png" />
+    <None Include="Resources\statistics.png" />
+    <None Include="Resources\sale-report.png" />
+    <None Include="Resources\adjustments.png" />
+    <None Include="Resources\receipt.png" />
+    <None Include="Resources\report.png" />
+    <Content Include="StacomRBG-removebg-preview-removebg-preview.ico" />
+    <None Include="Resources\contactcenter_agent_774.png" />
+    <None Include="Resources\Sales-Agent-PNG-High-Quality-Image.png" />
+    <Content Include="Stacom.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+  </Target>
+</Project>

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet5" targetNamespace="http://tempuri.org/DataSet5.xsd" xmlns:mstns="http://tempuri.org/DataSet5.xsd" xmlns="http://tempuri.org/DataSet5.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="StacomConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="StacomConnectionString (Settings)" PropertyReference="ApplicationSettings.WindowsFormsApp1.Properties.Settings.GlobalReference.Default.StacomConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProduseTableAdapter" GeneratorDataComponentClassName="ProduseTableAdapter" Name="Produse" UserDataComponentName="ProduseTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="StacomConnectionString (Settings)" DbObjectName="Produse" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Produse.CODProduse, Produse.NumeProd, Produse.PretProd, SUM(ComenziProd.Cantitate) AS TotalCantitate, Produse.PretProd * SUM(ComenziProd.Cantitate) AS TotalPretProd
+FROM            ((Comenzi INNER JOIN
+                         ComenziProd ON Comenzi.Com = ComenziProd.[ComP]) INNER JOIN
+                         Produse ON ComenziProd.CODProduse = Produse.CODProduse)
+GROUP BY Produse.CODProduse, Produse.NumeProd, Produse.PretProd</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CODProduse" DataSetColumn="CODProduse" />
+              <Mapping SourceColumn="NumeProd" DataSetColumn="NumeProd" />
+              <Mapping SourceColumn="TotalCantitate" DataSetColumn="TotalCantitate" />
+              <Mapping SourceColumn="TotalPretProd" DataSetColumn="TotalPretProd" />
+              <Mapping SourceColumn="PretProd" DataSetColumn="PretProd" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ServiciiTableAdapter" GeneratorDataComponentClassName="ServiciiTableAdapter" Name="Servicii" UserDataComponentName="ServiciiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="StacomConnectionString (Settings)" DbObjectName="Servicii" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Servicii.CODService, Servicii.NumeServ, Servicii.PretServ, SUM(ComenziServicii.CantitateServiciu) AS TotalCantitateServiciu, Servicii.PretServ * SUM(ComenziServicii.CantitateServiciu) AS TotalPret
+FROM            ((((Comenzi INNER JOIN
+                         ComenziServicii ON Comenzi.Com = ComenziServicii.ComS) INNER JOIN
+                         ServiciiTehnician ON ComenziServicii.CODST = ServiciiTehnician.CODST) INNER JOIN
+                         Servicii ON ServiciiTehnician.CodService = Servicii.CODService) INNER JOIN
+                         Tehnicieni ON ServiciiTehnician.CodTehnician = Tehnicieni.CODTehnician)
+GROUP BY Servicii.NumeServ, Servicii.PretServ, Servicii.CODService
+ORDER BY Servicii.PretServ * SUM(ComenziServicii.CantitateServiciu) DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CODService" DataSetColumn="CODService" />
+              <Mapping SourceColumn="NumeServ" DataSetColumn="NumeServ" />
+              <Mapping SourceColumn="PretServ" DataSetColumn="PretServ" />
+              <Mapping SourceColumn="TotalCantitateServiciu" DataSetColumn="TotalCantitateServiciu" />
+              <Mapping SourceColumn="TotalPret" DataSetColumn="TotalPret" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ServiciiTotaleTableAdapter" GeneratorDataComponentClassName="ServiciiTotaleTableAdapter" Name="ServiciiTotale" UserDataComponentName="ServiciiTotaleTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="StacomConnectionString (Settings)" DbObjectName="Tehnicieni" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TOP 5 Tehnicieni.CODTehnician, Tehnicieni.Nume, Tehnicieni.Prenume, SUM(ComenziServicii.CantitateServiciu) AS TotalServicii, SUM(ComenziServicii.CantitateServiciu * Servicii.PretServ) AS TotalValue, 
+                         Tehnicieni.Email
+FROM            (((Tehnicieni INNER JOIN
+                         ServiciiTehnician ON Tehnicieni.CODTehnician = ServiciiTehnician.CodTehnician) INNER JOIN
+                         Servicii ON ServiciiTehnician.CodService = Servicii.CODService) INNER JOIN
+                         ComenziServicii ON ServiciiTehnician.CODST = ComenziServicii.CODST)
+GROUP BY Tehnicieni.Nume, Tehnicieni.Prenume, Tehnicieni.CODTehnician, Tehnicieni.Email</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Nume" DataSetColumn="Nume" />
+              <Mapping SourceColumn="Prenume" DataSetColumn="Prenume" />
+              <Mapping SourceColumn="CODTehnician" DataSetColumn="CODTehnician" />
+              <Mapping SourceColumn="TotalServicii" DataSetColumn="TotalServicii" />
+              <Mapping SourceColumn="TotalValue" DataSetColumn="TotalValue" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet5" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSet5" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet5">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Produse" msprop:Generator_RowEvHandlerName="ProduseRowChangeEventHandler" msprop:Generator_RowDeletedName="ProduseRowDeleted" msprop:Generator_RowDeletingName="ProduseRowDeleting" msprop:Generator_RowEvArgName="ProduseRowChangeEvent" msprop:Generator_TablePropName="Produse" msprop:Generator_RowChangedName="ProduseRowChanged" msprop:Generator_UserTableName="Produse" msprop:Generator_RowChangingName="ProduseRowChanging" msprop:Generator_RowClassName="ProduseRow" msprop:Generator_TableClassName="ProduseDataTable" msprop:Generator_TableVarName="tableProduse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODProduse" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="CODProduseColumn" msprop:Generator_ColumnPropNameInRow="CODProduse" msprop:Generator_UserColumnName="CODProduse" msprop:Generator_ColumnVarNameInTable="columnCODProduse" type="xs:int" />
+              <xs:element name="NumeProd" msprop:Generator_ColumnPropNameInTable="NumeProdColumn" msprop:Generator_ColumnPropNameInRow="NumeProd" msprop:Generator_UserColumnName="NumeProd" msprop:Generator_ColumnVarNameInTable="columnNumeProd" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalCantitate" msprop:Generator_ColumnPropNameInTable="TotalCantitateColumn" msprop:Generator_ColumnPropNameInRow="TotalCantitate" msprop:Generator_UserColumnName="TotalCantitate" msprop:Generator_ColumnVarNameInTable="columnTotalCantitate" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalPretProd" msprop:Generator_ColumnPropNameInTable="TotalPretProdColumn" msprop:Generator_ColumnPropNameInRow="TotalPretProd" msprop:Generator_UserColumnName="TotalPretProd" msprop:Generator_ColumnVarNameInTable="columnTotalPretProd" type="xs:double" minOccurs="0" />
+              <xs:element name="PretProd" msprop:Generator_ColumnPropNameInTable="PretProdColumn" msprop:Generator_ColumnPropNameInRow="PretProd" msprop:Generator_UserColumnName="PretProd" msprop:Generator_ColumnVarNameInTable="columnPretProd" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Servicii" msprop:Generator_RowEvHandlerName="ServiciiRowChangeEventHandler" msprop:Generator_RowDeletedName="ServiciiRowDeleted" msprop:Generator_RowDeletingName="ServiciiRowDeleting" msprop:Generator_RowEvArgName="ServiciiRowChangeEvent" msprop:Generator_TablePropName="Servicii" msprop:Generator_RowChangedName="ServiciiRowChanged" msprop:Generator_UserTableName="Servicii" msprop:Generator_RowChangingName="ServiciiRowChanging" msprop:Generator_RowClassName="ServiciiRow" msprop:Generator_TableClassName="ServiciiDataTable" msprop:Generator_TableVarName="tableServicii">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODService" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="CODServiceColumn" msprop:Generator_ColumnPropNameInRow="CODService" msprop:Generator_UserColumnName="CODService" msprop:Generator_ColumnVarNameInTable="columnCODService" type="xs:int" />
+              <xs:element name="NumeServ" msprop:Generator_ColumnPropNameInTable="NumeServColumn" msprop:Generator_ColumnPropNameInRow="NumeServ" msprop:Generator_UserColumnName="NumeServ" msprop:Generator_ColumnVarNameInTable="columnNumeServ" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PretServ" msprop:Generator_ColumnPropNameInTable="PretServColumn" msprop:Generator_ColumnPropNameInRow="PretServ" msprop:Generator_UserColumnName="PretServ" msprop:Generator_ColumnVarNameInTable="columnPretServ" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalCantitateServiciu" msprop:Generator_ColumnPropNameInTable="TotalCantitateServiciuColumn" msprop:Generator_ColumnPropNameInRow="TotalCantitateServiciu" msprop:Generator_UserColumnName="TotalCantitateServiciu" msprop:Generator_ColumnVarNameInTable="columnTotalCantitateServiciu" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalPret" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="TotalPretColumn" msprop:Generator_ColumnPropNameInRow="TotalPret" msprop:Generator_UserColumnName="TotalPret" msprop:Generator_ColumnVarNameInTable="columnTotalPret" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ServiciiTotale" msprop:Generator_RowClassName="ServiciiTotaleRow" msprop:Generator_RowEvHandlerName="ServiciiTotaleRowChangeEventHandler" msprop:Generator_RowDeletedName="ServiciiTotaleRowDeleted" msprop:Generator_RowDeletingName="ServiciiTotaleRowDeleting" msprop:Generator_RowEvArgName="ServiciiTotaleRowChangeEvent" msprop:Generator_TablePropName="ServiciiTotale" msprop:Generator_RowChangedName="ServiciiTotaleRowChanged" msprop:Generator_UserTableName="ServiciiTotale" msprop:Generator_RowChangingName="ServiciiTotaleRowChanging" msprop:Generator_TableClassName="ServiciiTotaleDataTable" msprop:Generator_TableVarName="tableServiciiTotale">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nume" msprop:Generator_UserColumnName="Nume" msprop:Generator_ColumnPropNameInTable="NumeColumn" msprop:Generator_ColumnPropNameInRow="Nume" msprop:Generator_ColumnVarNameInTable="columnNume" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Prenume" msprop:Generator_UserColumnName="Prenume" msprop:Generator_ColumnPropNameInTable="PrenumeColumn" msprop:Generator_ColumnPropNameInRow="Prenume" msprop:Generator_ColumnVarNameInTable="columnPrenume" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CODTehnician" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="CODTehnician" msprop:Generator_ColumnPropNameInTable="CODTehnicianColumn" msprop:Generator_ColumnVarNameInTable="columnCODTehnician" msprop:Generator_UserColumnName="CODTehnician" type="xs:int" />
+              <xs:element name="TotalServicii" msprop:Generator_ColumnPropNameInRow="TotalServicii" msprop:Generator_ColumnPropNameInTable="TotalServiciiColumn" msprop:Generator_ColumnVarNameInTable="columnTotalServicii" msprop:Generator_UserColumnName="TotalServicii" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalValue" msprop:Generator_ColumnPropNameInRow="TotalValue" msprop:Generator_ColumnPropNameInTable="TotalValueColumn" msprop:Generator_ColumnVarNameInTable="columnTotalValue" msprop:Generator_UserColumnName="TotalValue" type="xs:double" minOccurs="0" />
+              <xs:element name="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Produse" />
+      <xs:field xpath="mstns:CODProduse" />
+    </xs:unique>
+    <xs:unique name="Servicii_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Servicii" />
+      <xs:field xpath="mstns:CODService" />
+    </xs:unique>
+    <xs:unique name="ServiciiTotale_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ServiciiTotale" />
+      <xs:field xpath="mstns:CODTehnician" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
